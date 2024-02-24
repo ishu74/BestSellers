@@ -34,10 +34,10 @@ function Listing() {
         if (data.success === false) {
           setError(true);
           setLoading(false);
-          setError(false);
           return;
         }
         setListing(data);
+        setError(false);
         setLoading(false);
       } catch (error) {
         setError(true);
@@ -48,12 +48,12 @@ function Listing() {
   }, [params.listingId]); //for loading one time
   return (
     <main>
-      {loading && (
+      {loading && 
         <p className="text-center my-7 text-2xl font-semibold">Loading....</p>
-      )}
+      }
       {error && (
         <p className="text-center my-7 text-2xl font-semibold text-red-700">
-          Something went wrong !{" "}
+          Something went wrong !
         </p>
       )}
       {listing && !loading && !error && (
