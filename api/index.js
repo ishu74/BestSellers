@@ -25,7 +25,9 @@ mongoose
 
 
   //deployment
-const __dirname = path.resolve();
+    // "build":"npm install && npm install --prefix client && npm run build --prefix client"
+
+const __dirname = path.resolve(); 
 app.use(express.static(path.join(__dirname, "/client/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));

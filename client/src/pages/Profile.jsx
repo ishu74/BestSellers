@@ -135,7 +135,7 @@ function Profile() {
   const handleShowListing = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`/api/user/listing/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -143,7 +143,7 @@ function Profile() {
       }
       setListings(data);
     } catch (error) {
-      setShowListings(true);
+      setShowListingsError(true);
     }
   };
 
@@ -251,7 +251,7 @@ function Profile() {
         {updateSuccess ? "Profile updated successfully !" : ""}
       </p>
       <button onClick={handleShowListing} className="text-green-700 w-full ">
-        Show Listings
+        Show Listings 
       </button>
       <p className="text-red-700 mt-5">
         {showlistingsError ? "Error showing listings" : ""}

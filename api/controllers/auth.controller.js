@@ -9,7 +9,8 @@ export const signup = async (req, res, next) => {
   const newUser = new User({ username, email, password: hashedPassword });
   try {
     await newUser.save();
-    res.status(201).json("User created successfully");
+    res
+    .status(201).json("User created successfully");
   } catch (error) {
     next(error);
     //   next(errorHandler(550,"Error from the Error Function")) handling manual error
@@ -28,7 +29,7 @@ export const signin = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: true,
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        // expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       })
       .status(200)
       .json(rest);

@@ -36,6 +36,7 @@ function CreateListing() {
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
+      setImageUploadError(false)
       const promises = [];
 
       for (let i = 0; i < files.length; i++) {
@@ -52,6 +53,7 @@ function CreateListing() {
         })
         .catch((err) => {
           setImageUploadError("Image Upload Error(2MB max per image)");
+          setUploading(false);
         });
     } else {
       setImageUploadError("You can only upload 6 images per listing");
@@ -283,7 +285,7 @@ function CreateListing() {
                <div className='flex flex-col items-center'>
               <p>Regular price</p>
               {formData.type === 'rent' && (
-                  <span className='text-xs'>($ / month)</span>
+                  <span className='text-xs'>( ₹ / month)</span>
                 )}
               </div>
             </div>

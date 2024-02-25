@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ListingItem from '../components/ListingItem.jsx';
 
-export default function Search() {
+ function Search() {
   const navigate = useNavigate();
   const [sidebardata, setSidebardata] = useState({
     searchTerm: '',
@@ -15,9 +15,8 @@ export default function Search() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [listings, setListings] = useState([]);
+  const [listings, setListings] = useState([0]);
   const [showMore, setShowMore] = useState(false);
-  console.log(listings);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -245,12 +244,10 @@ export default function Search() {
           )}
 
           {!loading &&
-            listings &&
+            listings && listings.map &&
             listings.map((listing) => (
               <ListingItem key={listing._id} listing={listing} />
             ))}
-
-    
 
           {showMore && (
             <button
@@ -264,4 +261,6 @@ export default function Search() {
       </div>
     </div>
   );
-}
+};
+
+export default Search;

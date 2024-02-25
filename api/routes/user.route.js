@@ -17,4 +17,4 @@ router.get('/signout/:id', verifyToken,  signOut)
 router.get('/listings/:id', verifyToken,  userListings)
 router.get('/:id', verifyToken,  getUser)
 
-export default router;
+export default router; 
